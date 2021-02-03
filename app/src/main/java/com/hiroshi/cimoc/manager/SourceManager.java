@@ -181,6 +181,9 @@ public class SourceManager {
                 case MangaBZ.TYPE:
                     parser = new MangaBZ(source);
                     break;
+                case CocoComic.TYPE:
+                    parser = new CocoComic(source);
+                    break;
 
                 default:
                     parser = new Null();

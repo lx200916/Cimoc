@@ -7,6 +7,7 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -172,6 +173,7 @@ public class SearchActivity extends BackActivity implements SearchView, TextView
                     list.add(switcher.getElement().getType());
                 }
             }
+            Log.d("Source",list.toString());
             if (list.isEmpty()) {
                 HintUtils.showToast(this, R.string.search_source_none);
             } else {

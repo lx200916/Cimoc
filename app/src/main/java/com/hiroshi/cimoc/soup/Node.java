@@ -32,6 +32,8 @@ public class Node {
         return new Node(get().select(cssQuery).first());
     }
 
+    public Node getParent(String cssQuery) {return new Node(get().select(cssQuery).first().parent());}
+
     public Node getLastChild(String cssQuery) {
         return new Node(get().select(cssQuery).last());
     }
