@@ -143,6 +143,11 @@ public class Node {
         return attrWithSubString("href", start, end);
     }
 
+    public String hrefWithLastSplit() {
+        String string = href();
+        return string.substring(string.lastIndexOf('/') + 1);
+    }
+
     public String hrefWithSubString(int start) {
         return hrefWithSubString(start, -1);
     }

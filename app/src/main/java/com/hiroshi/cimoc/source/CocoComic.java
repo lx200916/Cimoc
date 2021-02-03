@@ -7,7 +7,6 @@ import com.hiroshi.cimoc.model.Chapter;
 import com.hiroshi.cimoc.model.Comic;
 import com.hiroshi.cimoc.model.ImageUrl;
 import com.hiroshi.cimoc.model.Source;
-import com.hiroshi.cimoc.parser.Category;
 import com.hiroshi.cimoc.parser.MangaCategory;
 import com.hiroshi.cimoc.parser.MangaParser;
 import com.hiroshi.cimoc.parser.NodeIterator;
@@ -18,11 +17,9 @@ import com.hiroshi.cimoc.utils.StringUtils;
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONException;
 
-
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.Security;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -150,6 +147,16 @@ public class CocoComic extends MangaParser {
     }
 
     @Override
+    public Request getCheckRequest(String cid) {
+        return getInfoRequest(cid);
+    }
+
+    @Override
+    public String parseCheck(String html) {
+        return new Node(html).getChild("dl").text("dd > ul span:containsOwn(更新) + a");
+    }
+
+    @Override
     public List<ImageUrl> parseImages(String html) {
         List<ImageUrl> list = new ArrayList<>();
 
@@ -158,7 +165,7 @@ public class CocoComic extends MangaParser {
             return null;
         }
         String CDATA = matcher.group(1);
-        Log.d("SourcePic",CDATA);
+        Log.d("SourcePic", CDATA);
 
         String info = decode(CDATA, "fw122587mkertyui");
         Matcher matcherInfo= null;
