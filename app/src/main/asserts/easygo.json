@@ -8,25 +8,24 @@
         },
         "body": {
             "mode": "1",
-            "defaultDualActivities": {
-                "mainPages": "com.huawei.example.Main1Activity",
-                "relatedPage": "com.huawei.example.A0Activity"
-            },
-            "transActivities": [
-                "com.huawei.example.A1Activity",
-                "com.huawei.example.A2Activity"
-            ],
-            "Activities": [{
-                    "name": "com.huawei.example.AFullScreenActivity",
-                    "defaultFullScreen": "true"
+            "activityPairs": [
+                {
+                    "from": "com.hiroshi.cimoc.ui.activity.MainActivity",
+                    "to": "*"
                 },
                 {
-                    "name": "com.huawei.example.BFullScreenActivity",
-                    "lockSide": "primary"
+                    "from": "com.hiroshi.cimoc.ui.activity.ResultActivity",
+                    "to": "com.hiroshi.cimoc.ui.activity.DetailActivity"
+                }
+            ],
+            "Activities": [
+                {
+                    "name": "com.hiroshi.cimoc.ui.activity.PageReaderActivity",
+                    "defaultFullScreen": "true"
                 }
             ],
             "UX": {
-                "supportRotationUxCompat": "false",
+                "supportRotationUxCompat": "true",
                 "isDraggable": "false",
                 "supportDraggingToFullScreen": "PAD|FOLD"
             }
