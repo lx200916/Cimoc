@@ -1,0 +1,35 @@
+{
+    "easyGoVersion": "1.0",
+    "client": "com.hiroshi.cimoc",
+    "logicEntities": [{
+        "head": {
+            "function": "magicwindow",
+            "required": "true"
+        },
+        "body": {
+            "mode": "1",
+            "defaultDualActivities": {
+                "mainPages": "com.huawei.example.Main1Activity",
+                "relatedPage": "com.huawei.example.A0Activity"
+            },
+            "transActivities": [
+                "com.huawei.example.A1Activity",
+                "com.huawei.example.A2Activity"
+            ],
+            "Activities": [{
+                    "name": "com.huawei.example.AFullScreenActivity",
+                    "defaultFullScreen": "true"
+                },
+                {
+                    "name": "com.huawei.example.BFullScreenActivity",
+                    "lockSide": "primary"
+                }
+            ],
+            "UX": {
+                "supportRotationUxCompat": "false",
+                "isDraggable": "false",
+                "supportDraggingToFullScreen": "PAD|FOLD"
+            }
+        }
+    }]
+}
