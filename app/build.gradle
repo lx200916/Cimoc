@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.greenrobot.greendao'
 
-def buildVersion = 329
+def buildVersion = 328
 def version = "v1.4.14"
 
 def cmdGetTagname = 'git describe --tags'
@@ -19,7 +19,8 @@ version = cmdGetTagname.execute().text.trim()
 
 apply plugin: 'com.google.gms.google-services'  // Google Services plugin
 //apply plugin: 'com.google.firebase.crashlytics'
-
+apply plugin: 'com.android.application'
+apply plugin: 'com.huawei.agconnect'
 android {
     compileSdkVersion 29
     buildToolsVersion '29.0.3'
