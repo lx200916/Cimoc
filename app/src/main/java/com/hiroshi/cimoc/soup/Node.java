@@ -71,6 +71,12 @@ public class Node {
         return StringUtils.substring(text(cssQuery), start, end);
     }
 
+    public String hrefWithLastSplit() {
+        String string = href();
+        String[] arr = string.split("/");
+        return arr[arr.length - 1];
+    }
+
     public String textWithSubstring(String cssQuery, int start) {
         return textWithSubstring(cssQuery, start, -1);
     }

@@ -76,7 +76,7 @@ public class YKMH extends MangaParser {
     public Request getInfoRequest(String cid) {
         Log.d("SourceInfo:", String.valueOf(cid));
 
-        return new Request.Builder().url(mHost.concat("manhua/").concat(cid)).addHeader("referer", "https://m.ykmh.com/search").addHeader("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36")
+        return new Request.Builder().url(mHost.concat("manhua/").concat(cid).concat("/")).addHeader("referer", "https://m.ykmh.com/search").addHeader("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36")
                 .build();
 
     }
@@ -86,7 +86,7 @@ public class YKMH extends MangaParser {
         Node body = new Node(html);
         Node info = body.getChild("div.Introduct_Sub");
         String title = body.text("div#comicName");
-        String cover = info.attr("div#Cover img", "src");
+        String cover = info.getChild("div#Cover > *").src();
         String update = info.text("p.txtItme > span.date");
         String author = info.getParent("p.txtItme > span.icon01").text();
         String intro = body.getParent("p#full-des #showmore-des").text();
@@ -129,9 +129,9 @@ public class YKMH extends MangaParser {
         String CDATA = String.format("[%s]", matcher.group(1));
         JSONArray array = null;
         try {
-            array = new JSONArray(html);
+            array = new JSONArray(CDATA);
             for (int i = 0; i < array.length(); i++) {
-                String url = array.getString(i);
+                String url = StringUtils.format("https://pic.w1fl.com%s", array.getString(i));
                 list.add(new ImageUrl(i + 1, url, false));
 
             }
