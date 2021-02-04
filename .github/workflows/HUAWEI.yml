@@ -1,13 +1,13 @@
 # This workflow will build a Java project with Gradle
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
-name: APK
+name: APK For HW
 
 on:
   push:
-    branches: [ Dev-New]
+    branches: [ Hw-Dev ]
   pull_request:
-    branches: [ Dev-New ]
+    branches: [ Hw-Dev ]
 
 jobs:
   build:
@@ -27,5 +27,5 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v2.2.2
       with:
-          name: app
+          name: app-for-Huawei
           path: app/build/outputs/apk/debug/Cimoc.apk
