@@ -1,4 +1,5 @@
-<img src="./screenshot/icon.png">
+更改已提交至上游分支,本Repo已封存.请直接拉取上游分支.
+
 
 # 应用简介
 
